@@ -31,12 +31,27 @@ raiz.resizable(1,1) #width,height
 raiz.iconbitmap("logo.ico")
 #raiz.geometry("650x350")
 
+#------------Barra de Menu---------------------
+
+menubar = Menu(raiz);
+raiz.config(menu=menubar) 
+filemenu = Menu(menubar, tearoff=0)
+ayudamenu= Menu(menubar, tearoff=0)
+filemenu.add_command(label="Modo Desempeno", command=raiz.destroy)
+filemenu.add_command(label="Modo Analisis", command=raiz.destroy)
+filemenu.add_separator()
+filemenu.add_command(label="Salir", command=raiz.destroy)
+ayudamenu.add_command(label="Acerca de la Herramienta", command=lambda:crearVentanaAyuda())
+
+menubar.add_cascade(label="Archivo", menu=filemenu)
+menubar.add_cascade(label="Ayuda", menu=ayudamenu)
+
 #----Informacion de Materiales------------------
 data=pd.read_excel(r'./Datos/Data.xlsx')
 materiales=data['Material'].values.tolist()
 #----------Panel Derecha-------------------
 Frame_Der=Frame(raiz,width=2400,height=600)
-Frame_Der.config(bd=2,relief="groove")
+Frame_Der.config(bd=2,relief="raised")
 Frame_Der.pack(side="right",anchor="n")
 
 #---------------------Label Panel Derecha
@@ -111,7 +126,7 @@ def Panel_homogeneo():
     global Frame_Homogeneo, Frame_Der
     global longitud, material,inicial_OS_n
     Frame_Homogeneo=Frame(Frame_Der);
-        
+            
     Label(Frame_Homogeneo,text="Grosor Pelicula [cm]:").grid(row=0,column=0);
     Label(Frame_Homogeneo,text='Concentracion OS [mol/cm^3]:').grid(row=1,column=0);
     Label(Frame_Homogeneo,text='Material:').grid(row=2,column=0);    
@@ -173,6 +188,8 @@ class Checkbar(Frame):
       
    def state(self):
       return map((lambda var: var.get()), self.vars)
+      
+       
 
   
 def numero_capas(event=None):
@@ -234,10 +251,10 @@ Frame_izq=Frame(raiz,width=2400,height=600)
 Frame_izq.config(bd=10,relief="sunken")
 Frame_izq.pack(side="left",anchor="n")
 titulo_result=Label(Frame_izq,text="Resultados")
-titulo_result.grid(row=0,column=0,columnspan=3)
+titulo_result.grid(row=0,column=0,columnspan=2)
 
 cuaderno=ttk.Notebook(Frame_izq)
-cuaderno.grid(row=1,column=0,columnspan=3)
+cuaderno.grid(row=1,column=0,columnspan=2)
 
 #----------Label Frames Izquierdo-------------------
 Label(Frame_izq, text='Tiempo S.S. [h]:').grid(row=2,column=0);
@@ -249,9 +266,7 @@ Entry(Frame_izq,width=12,textvariable=tiempo_result,justify="right",state='reado
 Entry(Frame_izq,width=12,textvariable=O2_result,justify="right",state='readonly').grid(row=3,column=1);
 
 #--------------Boton de almacenamiento de resultados------------------
-
-
-Button(Frame_izq,text='Guardar Resultados',width=15,command=lambda:guardar()).grid(row=4,column=0,columnspan=3,pady=2);
+Button(Frame_izq,text='Guardar Resultados',width=15,command=lambda:guardar()).grid(row=4,column=0,columnspan=2,pady=2);
 
 #---------------Inclusion de Pesetañas Frame Izquierdo ------------------
 grafico_1=Frame(cuaderno)
@@ -421,6 +436,11 @@ def f(t,u):
     R=8.314;
     dx=x[1]-x[0]
     #Calculo de la derivada temporal 
+    print(np.shape(u))
+#    especies=np.reshape(u[:-1],(2,-1));
+#    print(np.shape(especies))
+#    
+    
     du_dt=np.zeros((2*n+1));
     du_dt[1:n-1]=D[1:n-1]*((-2*u[1:n-1]+u[2:n]+u[0:n-2])/(dx**2))-k*u[1:n-1]*u[n+1:(2*n-1)]
     du_dt[n:(2*n)]=-nu*k*u[:n]*u[n:(2*n)];
@@ -447,7 +467,7 @@ def ic(x):
   
 def pde(x,to,tf):
     global D, A,O2_result
-    global t, O2, OS, HS
+    global t, O2, OS, HS , masa 
     dx=x[1];
     uo=ic(x);
     
@@ -538,6 +558,7 @@ def pde(x,to,tf):
 
 def guardar():
     global x, t, O2, OS, HS
+    global nu,D,k,A,V,s,co,n,x,tf,temp,T,inicial_OS_n,reactiva,longitud,material,OS_0,L
     files = [('Excel', '*.xlsx')] 
     file = filedialog.asksaveasfilename(filetypes = files, defaultextension = files)
     tabla =np.zeros((len(t)+1,len(x)+1));
@@ -547,7 +568,82 @@ def guardar():
     tabla=tabla.tolist();
     tabla[0][0]='Tiempo [s]\ Posicion [m]'
     
+    
+    tabla_2 =np.zeros((len(t)+1,len(x)+1));
+    tabla_2[1:,0]=t;
+    tabla_2[0,1:]=x;
+    tabla_2[1:,1:]=OS;
+    tabla_2=tabla_2.tolist();
+    tabla_2[0][0]='Tiempo [s]\ Posicion [m]'
+    
+    
+    writer = pd.ExcelWriter(file, engine='xlsxwriter')
     df=pd.DataFrame(tabla)
-    df.to_excel(file, sheet_name='Concentracion O2', index=False)
-    #Pel. mol_cm3
+    df_2=pd.DataFrame(tabla_2)
+    df_3=pd.DataFrame({'Tiempo [s]':t, 'O2 HeadSpace [mol/cm3]':HS})
+    df_4=pd.DataFrame({'Tiempo [s]':t,'Masa O2 absorbida [g]':masa })
+    df.to_excel(writer, sheet_name='Concentracion O2', index=False)
+    df_2.to_excel(writer, sheet_name='Concentracion OS', index=False)
+    df_3.to_excel(writer, sheet_name='Headspace O2 Concentration', index=False)
+    df_4.to_excel(writer, sheet_name='Masa O2 absorbido', index=False)
+    writer.save()
+
+
+
+#-----------------Menu de Ayuda---------------------
+    
+def crearVentanaAyuda():
+    global tree, texto_label
+    newWindow = Toplevel(raiz)
+    newWindow.iconbitmap("logo.ico")
+    tree=ttk.Treeview(newWindow)
+    Intro=tree.insert("", END, text="Introduccion")
+    Tutorial=tree.insert("", END, text="Tutorial")
+    tree.heading("#0", text="Categoria")
+    tree.insert(Tutorial, END, text="Modo Desempeno")
+    tree.bind("<Double-1>",item_seleccionado)
+    tree.pack(side=LEFT)
+    texto_Frame=Frame(newWindow);
+    texto_Frame.config(bd=2,relief="groove")
+    texto_Frame.pack(side=RIGHT, fill=Y)
+    
+     
+    barra=Scrollbar(texto_Frame);
+    posicion_instr="""HAMLET: To be, or not to be--that is the question:
+Whether 'tis nobler in the mind to suffer
+The slings and arrows of outrageous fortune
+Or to take arms against a sea of troubles
+And by opposing end them. To die, to sleep--
+No more--and by a sleep to say we end
+The heartache, and the thousand natural shocks
+That flesh is heir to. 'Tis a consummation
+Devoutly to be wished."""
+    barra=Scrollbar(texto_Frame);
+    texto_label=Text(texto_Frame, height=4, width=50);
+    barra.pack(side=RIGHT, fill=Y)
+    texto_label.pack(side=LEFT, fill=Y)
+    barra.config(command=texto_label.yview);
+    texto_label.config(yscrollcommand=barra.set)
+    texto_label.insert("insert",posicion_instr)
+    texto_label.config(state=DISABLED,font=("Helvetica", 10, "italic"))
+    
+    
+
+def item_seleccionado(event=None):
+    global tree, texto_label
+    seleccionado=tree.item(tree.selection());
+    valor=seleccionado['text'];
+    
+    texto_label.config(state=NORMAL)
+    texto_label.delete(1.0, END)
+    if valor=="Tutorial":
+        texto_label.insert("insert",valor);
+        
+    texto_label.config(state=DISABLED)      
+    
+    
+
+    
+
+
 raiz.mainloop()
