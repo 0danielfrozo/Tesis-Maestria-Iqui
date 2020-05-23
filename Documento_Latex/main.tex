@@ -1,7 +1,8 @@
-\documentclass[twoside]{article}
+\documentclass[twoside]{report}
 \usepackage[utf8]{inputenc}
-\usepackage[spanish,activeacute,english]{babel}
-\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage[a4paper,width=150mm,top=25mm,bottom=25mm,bindingoffset=6mm]{geometry}
+\usepackage[english,spanish,activeacute,]{babel}
 \usepackage[some]{background}
 \usepackage{fancyhdr}
 
@@ -9,10 +10,9 @@
   \includegraphics[width=0.5\paperwidth]{Documento_Latex/Imagenes/logo.png}}%
  }
 
-\fancyhf{}
-\fancyhead[LO]{\small \emph{\nouppercase{\leftmark}}}
-\fancyhead[RE]{\small \emph{\nouppercase{\rightmark}}}
-\fancyfoot[LE,RO]{Página \thepage}
+
+\fancyfoot{}
+\fancyfoot[LE,RO]{\thepage}
 \pagenumbering{roman}
 
 \title{Development of a Computational Desing Tool for Polypropylene-based composites having oxygen scavengers using the Hetereogenous Film Approach}
@@ -56,6 +56,7 @@
 
 \end{titlepage}
 
+\chapter*{Abstract}
 \input{Documento_Latex/Secciones/Resumen}
 \vspace{\fill}
 \pagebreak
@@ -63,7 +64,12 @@
 \tableofcontents
 \vspace{\fill}
 \pagebreak
+\pagestyle{fancy}
+\chapter{Introduction and Literature Review}
 \input{Documento_Latex/Secciones/Introduccion}
+\pagebreak
+\chapter{Methodology}
+\input{Documento_Latex/Secciones/Metodologia}
 
 
 
