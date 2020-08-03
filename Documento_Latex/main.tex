@@ -47,7 +47,7 @@
 \makeatother
 
 \DeclareUnicodeCharacter{2212}{-}
-%\linespread{1.5}
+\linespread{1.5}
 
 \fancyfoot{}
 \fancyfoot[LE,RO]{\thepage}
@@ -59,6 +59,7 @@
 \date{\Today}
 
 \begin{document}
+\selectlanguage{english} 
 \begin{titlepage}
 \begin{center}
 \BgThispage
@@ -68,20 +69,20 @@
         \vspace{1cm}
         \LARGE
 
-        \vspace{4cm}
+        \vspace{1cm}
         \textit{Author:}\\
         \textbf{Daniel Fernando Rozo Oviedo}\\
         \vspace{1.5cm}
         \textit{Supervisor:}\\
         \textbf{Felipe Salcedo Galan, PhD}\\
         \textit{Co-advisor:}\\
-        \textbf{Jorge Alberto Medina Perilla , Dr. Ing.}
+        \textbf{Jorge Alberto Medina Perilla, Dr. Ing.}
         \vfill
  
         Thesis submitted for the degree of\\ Master in Chemical Engineering
         
  
-        \vspace{1cm}
+        \vspace{0.5cm}
  
         
  
@@ -94,19 +95,19 @@
     \end{center}
 \afterpage{\null\newpage}
 \end{titlepage}
-
 \input{Documento_Latex/Secciones/Resumen}
 \tableofcontents
 \vspace{\fill}
-\pagestyle{fancy}
 \chapter{Introduction and Literature Review}
+\pagestyle{fancy}
 \input{Documento_Latex/Secciones/Introduccion}
 \pagebreak
 \chapter{Methodology}
 \input{Documento_Latex/Secciones/Metodologia}
 \chapter{Results and Analysis}
 \input{Documento_Latex/Secciones/Resultados_y_Analisis}
-
+\chapter{Conclusions and Future work}
+\input{Documento_Latex/Secciones/Conclusiones}
 
 
 
