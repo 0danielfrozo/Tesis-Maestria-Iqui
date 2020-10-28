@@ -1,0 +1,148 @@
+\begin{refsection}
+The chapter of results is divided in three main sections. The first one corresponds to the results in the adjustment of the kinetic constant and initial concentration of chemical species in linseed oil. Afterwards  the results over the analysis of the different numerical methods implemented is going to be done, and one of the methods used is going to be chosen for the computational design tool implementation. Finally The interface of the design tool is going to be presented and a brief description in how to use this program is described.  
+
+
+\section{Linseed oil kinetics adjustment results}
+Following the procedure described in \ref{subsec:parameters_adjustment_meth}, and adjustment over the initial concentration of chemical species in linseed oil was made.  The oxidative TGA results obtained by  Lazzari and Chiantore \cite{lazzari1999drying}  for linseed oil at a temperature of 80\degree C were used as the reference whose prediction is desired. In this case, the values for the kinetic constants $k_1$  to $k_6$  were taken from Richaud \cite{Richaud2012RateChemiluminescence}. The initialization point for the optimization method was taken from the concentrations for $[ROOH]_o$ and  $[RH]_o$  in linseed oil proposed by Garcia \cite{GarciaMora2015KineticScavengers}. In this case it is considered that the initial concentration of radicals $[\ce{R^.}]$ and $[\ce{ROO^.}]$ its zero given that hydroperoxide decomposition has not occurred yet. With this in mind the results of the adjusment are shown in figure \ref{fig:ajuste_1_cinetica} and table .
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.56\linewidth,page=4]{Documento_Latex/Imagenes/rozogafas.pdf}
+    \caption{Comparison between the kinetic model and the experimental data for quantity of oxygen absorbed per gram of Linseed oil. Experimental results taken from \cite{lazzari1999drying}.}
+    \label{fig:ajuste_1_cinetica}
+\end{figure}
+
+\begin{table}[H]
+\centering
+\caption{Arrhenius parameters for reaction velocity constants, and the initial concentrations of chemical species in linseed oil determined from adjustments with experimental data. }
+\label{tab:kinetic parameters}
+
+\begin{tabular}{ccc}
+\hline
+\multirow{2}{*}{} & \multicolumn{2}{c}{Arrhenius   Parameters}  \\
+                  & ko {[}L/mol s{]}         & Ea {[}kJ/mol{]}   \\ \hline
+\ref{reacc:initiation} ($k_1$)  & 4.09E+10   & 101.5             \\ 
+\ref{reacc:O_2 consumption} ($k_2$) & 1.00E+07 & 1               \\ 
+\ref{reacc: propagation} ($k_3$) & 3.52E+06  & 31                 \\ 
+\ref{reacc:termination_2alkyrad} ($k_4$)  & 3.00E+11 & 0          \\ 
+\ref{reacc:termination_alky_peroxide_rad} ($k_5$) & 1.00E+10 & 0   \\
+\ref{reacc:termination_2peroxide_rad} ($k_6$)  & 3.05E+15 & 48.8    \\ \hline
+                  & \multicolumn{2}{c}{Intial   Concentration (mol/L)} \\
+$[ROOH]_o$        & \multicolumn{2}{c}{5.00E-03}                       \\
+$[RH]_o$          & \multicolumn{2}{c}{6.8} \\ \hline           
+\end{tabular}%
+\end{table}
+
+Results in figure \ref{fig:ajuste_1_cinetica}, show that the kinetic model is consistent with experimental data until the maximum  quantity of oxygen absorbed is reached. In the case of experimental data, the reduction detected in the mass of oxygen absorbed during the final test times occurs due to the evaporation of volatile components present in the oil. To calculate the oxygen absorption with the TGA data given in \cite{lazzari1999drying}, weight changes in the linseed oil where normalized with respect to the initial weight value. In that sense, the values reported in this document as experimental oxygen absorption data  are really the weight changes in the linseed oil which are causes by absorption of oxygen and evaporation of volatile components. Given that the kinetic model adjusted does not take into account lost of volatile components by evaporation, it is not able to predict the reduction in the weight of the linseed oil.  It is useful to observe that kinetic model used  is able to predict the induction time in which the reaction take place. Predicting this time is crucial when calculating the useful life of the OS films. On the other hand, the kinetic model adjusted is consistent when evaluating the dynamics of absorption at different temperatures (see Figure \ref{fig:temperature_kinetics_result}).
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.56\linewidth,page=5]{Documento_Latex/Imagenes/rozogafas.pdf}
+    \caption{Oxygen absorption profile of linseed oil calculated with the kinetic model for different temperatures.}
+    \label{fig:temperature_kinetics_result}
+\end{figure}
+
+The kinetic model is able to predict the endothermic behaviour of the reaction, were for high temperatures (90\degree C) the induction time is reduced to approximately 2 hours while for lower temperatures the induction time is of the order of 41 hours. This profile also predicts an  oxygen uptake capacity of 0.7 wt\% for linseed oil. To confirm the validity of the values obtained from  the kinetic model adjusted, a comparison of the peroxide value obtained by this mean was contrasted against the experimental values determined by Hess and O'Hare \cite{Hess1950OxidationOil} (Figure \ref{fig:Peroxide value}).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\linewidth,page=6]{Documento_Latex/Imagenes/rozogafas.pdf}
+    \caption{Comparison between experimental and computational peroxide value profile for linseed oil oxidation. Experimental data obtained from \cite{Hess1950OxidationOil}}
+    \label{fig:Peroxide value}
+\end{figure}
+
+The result in the previous figure shows that the kinetic model is able to predict the maximum peroxide value given a certain temperature. On the other hand it does not predict correctly when this maximum values occur. This is a systematic error in the model, because for all temperatures the maximum peroxide values predicted by the model occurs earlier than in the experimental data. This means that in the kinetic model the  bi-molecular decomposition is occurring at a much more faster rate than it should be, reason why the accumulation of peroxide radicals reaches its maximum value in a shorter time, before decreasing by the termination reactions. This means that the values of concentration  predicted are going to be correct but the times given by the model are going to be underestimated. To correct this, more experimental data regarding oxidative TGA, is needed at different temperatures so 
+that more accurate kinetic velocity constants are determined. Even so, the values found in this section are going to be used as a first approximation to the development of the computational design tool.  
+
+\section{Finite Difference Numerical Methods Comparison}
+Once having establish the kinetic model which is going to be used for the simulations, the performance of the different numerical methods described in section \ref{subsec:numerical_methodology.} were compared. To do this a simulation of a 0.06$mm$ thick and 25 $cm^2$ monolayer PET film was made. The time interval modeled was 2 hours at a temperature of 373K. This temperature was  chosen so that the reaction has a faster velocity rate which enables to see the scavenging effect of the oil in the time simulated. The OS load used was $0.1 vol\%$. To observe that the chosen parameters had a significant effect over the oxygen concentration profile, a simulation with and without OS load was made. The results obtained are shown in figure \ref{fig:oxygen_profile with and without OS}. 
+
+\begin{figure}[ht]
+    \centering
+    \subfloat[]{
+    \resizebox{0.48\textwidth}{!}{
+    \begin{adjustbox}{clip,trim=3.3cm 1cm 1.3cm 2cm}
+    \input{Documento_Latex/Imagenes/perfil_sin_OS.pgf}
+    \end{adjustbox}}
+    }
+    \subfloat[]{
+    \resizebox{0.48\textwidth}{!}{
+    \begin{adjustbox}{clip,trim=3.3cm 1cm 1.3cm 2cm}
+    \input{Documento_Latex/Imagenes/perfil_con_OS.pgf}
+    \end{adjustbox}}}
+    \caption{Oxygen concentration profile obtained with out Linseed oil \textbf{(a)} and with 0.1 vol\% charge \textbf{(b)}.  }
+    \label{fig:oxygen_profile with and without OS}
+\end{figure}
+
+The previous profile shows that the parameters of OS load and temperature were good enough to see the effect of linseed oil oxygen uptake. With this in mind the simulation shown in \ref{fig:oxygen_profile with and without OS} was run with all the different numerical methodology, and the time taken by each of the of the algorithms to get to the solution was measured. The time take by each algorithm is shown in figure \ref{fig:bar_graph_comp_times}.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.65\linewidth,page=3]{Documento_Latex/Imagenes/rozogafas.pdf}
+    \caption{Computational time used by each one of the algorithms evaluated for a 2h simulated time. The time step used for this simulation was 0.1s.}
+    \label{fig:bar_graph_comp_times}
+\end{figure}
+
+For being able to obtain an stable solution to the system of equations using the IMEX methods, a time step of 0.1s had to be used. This implies that the reactive part of the PDE system is also stiff. This is the reason why the system is unstable unless a small time step is used. An interesting tendency is observed when analysing the  behavior of computational time of the IMEX methods. This is that the fastest method among them was 1-SBDF, followed by 2-SBDf, MCNAB, and finally CNAB, this is the same order of stability of the different IMEX method are order from best to the worst. It implies that the system of equations has high frequency errors which are better damped by the 1-SBDF than by CNAB which is why this last method was slower than the other IMEX algorithms. Using the same time step for the LOD and FSM algorithms the computational time increases dramatically being on the order of half an hour while the IMEX methods are in the order of 1 to 5 minutes. This increment in the computational time is due to the implicit nature of the solution and the small time step used. Given that the implicit methods are computationally more expensive due to the solving of the system of equations to calculate a time step, and given that the time step used is very small it forces the algorithms to do more iterations in order to get to the final solution. In that sense, each iteration given by an implicit method is computationally slower than one given by an IMEX method this is why the computational time of LOD and FSM is much more higher. On the contrary, when using the variable time step with the LOD and FSM methods there is a significant improvement in the computational time. This is because a fewer number of iterations is done  for solving the PDE system. This fact may have effects over the accuracy of the results given by the adaptive step methods. For that reason a comparison of the head space oxygen concentration and absorption profile obtained by the different methods was made (see Figure \ref{fig:Comparacion_resultados_metodos}).
+
+\begin{figure}[ht]
+    \centering
+    \subfloat[]{
+    \includegraphics[width=0.48\linewidth,page=1]{Documento_Latex/Imagenes/rozogafas.pdf}
+    }
+    \subfloat[]{
+    \includegraphics[width=0.48\linewidth,page=2]{Documento_Latex/Imagenes/rozogafas.pdf}
+    }
+    \caption{Oxygen absorption profile (a) and  Head-space oxygen concentration (b) obtained by means of the methods IMEX, LOD and FMS with and without variable time step.}
+    \label{fig:Comparacion_resultados_metodos}
+\end{figure}
+
+The comparison in the results obtained for the profile predictions shows that all constant time step methods give the exact same result, while the methods using a variable time step present a mild deviation from the values obtained by the other methods. To be able to obtain this results with few error using the variable step LOD method a $\eta_{min}=1e-9$ was used. As a consequence of that parameter there was little variation in the time steps taken by this method, which used an average of 1s for its time step, reason why it took a longer computational time to solve the system of equation compared to the FMS with variable step time. The fractional method with variable time step generated the same profiles as the variable step LOD method with less error and in less computational time. This is due to the  decoupling of the reaction and diffusion part of the PDE system to solve. In this way solving the linear diffusive system apart form the non-linear reactive system translates in a higher efficiency when solving the OS film dynamics. For this reason, the FMS with variable step time was the method chosen for the implementation of the computational design tool. Even so, there exist the need to o an study to find the optimal values of the variable time step methodology needed to reduce the error with respect to the constant time step methods, but taking the lowest computational time possible. 
+
+\section{Computational Design Tool Interface}
+As explained in the methodology the graphical interface of the computational design tool for OS films was developed  using the library \textit{tkinter} in python. The main window of the develop tool is shown in figure \ref{fig:intefaz_principal}.  
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=\linewidth]{Documento_Latex/Imagenes/Interfaz.png}
+    \caption{Computational modeling tool main window}
+    \label{fig:intefaz_principal}
+\end{figure}
+
+This main window is divided in two panels, a parameter panel (right) and a result panel (left). In the superior part, there is the menu bar with two sub menus. The first one of this is the file submenu which contains two the option to select the mode of the tool, the performance and the analysis mode. The performance mode is the one selected by default and corresponds to the mode shown in Figure \ref{fig:intefaz_principal}. This mode enable to model the oxygen uptake performance of a given monolayer (homogeneous) or multilayer film. The second mode, is not yet implemented within the program but it will be in a new version. This mode is thought to enable the user of the tool to study the effect of different parameters over the the performance variables such as headspace oxygen concentration, absorption and time lag. The other sub menu in the superior bar is the help one, which has an unique option, ''About this tool", which opens a sub-window as the one shown in figure \ref{fig:help_window}
+ \begin{figure}[H]
+     \centering
+     \includegraphics[width=0.8\linewidth]{Documento_Latex/Imagenes/menu_ayuda.png}
+     \caption{''About this tool" sub-window}
+     \label{fig:help_window}
+ \end{figure}
+Even though this information panel is not finished, the idea of this is to present the instructions on how to correctly use the tool,  and additional information such as the different material properties used by the program as well as an explanation on the assumptions made to carry out the programming of the tool. With respect to the instructions on how to use the computational tool made so far, the first thing is to know whether a simulation of a multilayer or a monolayer film is desired. In this order of ideas, if the user wants to simulate a homogeneous film he must select the option homogeneous in the ''type of film:" box. This is the type of film which is  going to be modeled by default. Next the user must insert the film area in $cm^2$ and must select if the film which is going to be simulated is or not in an open space. As the default option the program assumes that the film is going to be within a finite volume of gas and so the volume text box is enable to edition, on the contrary if the user selects the option indicating that the film is in an open space, the volume text box will be disabled. Then, the concentration of oxygen in the surrounding air must be entered in the ''Oxygen Concentration (mol/cm3)" box. In case the film is in an open space the program will assume this concentration as constant, if is not the case then the oxygen concentration will vary according to equation  \ref{eq:headspace}. Then, the user must enter the time interval and the temperature at which the simulation will be done. It should be clarified again that the temperature will be constant through out the whole process given that the simulation model is isothermal. Finally the user must enter the thickness and OS volumetric load, and must select the polymeric material which the film is made of. Once done this, the simulation is ready to start, to do this the button ''Calculate performance" which is in the parameters panel, must be selected. This will open a sub-window containing a progress bar which indicates that the simulation is in progress. When the progress bar is full, the simulation will be finished, and the results obtained are shown in the left panel. This panel contains 6 plots, the first two correspond to the 3D and contour plot of the evolution of oxygen concentration in the film, the next two correspond to the contour 3D and contour plot of the peroxide radical concentration and the final two plots correspond to the head space oxygen concentration profile and total $O_2$ mass absorption profile. An example of how this plots are displayed is shown in figure \ref{fig:resultados herramienta}. 
+
+  \begin{figure}[ht]
+            \centering
+            \subfloat[]{
+            \includegraphics[width=0.3\textwidth]{Documento_Latex/Imagenes/3d_O2_profile.png}}
+            \subfloat[]{
+            \includegraphics[width=0.3\textwidth]{Documento_Latex/Imagenes/contour_O2_profile.png}}
+            \subfloat[]{            \includegraphics[width=0.3\textwidth]{Documento_Latex/Imagenes/3d_OS_profile.png}}
+    
+             \subfloat[]{
+             \includegraphics[width=0.3\textwidth]{Documento_Latex/Imagenes/contour_OS_profile.png}}
+            \subfloat[]{
+             \includegraphics[width=0.3\textwidth]{Documento_Latex/Imagenes/o2_headspace.png}}
+            \subfloat[]{
+             \includegraphics[width=0.3\textwidth]{Documento_Latex/Imagenes/o2_masa_absorbida.png}}
+            \caption{Results displayed by the computational tool, where \textbf{(a)} is the 3d and  \textbf{(b)} contour $O_2$ concentration profile, \textbf{(c)} and \textbf{(d)} are the 3d and contour \ce{POO^.} concentration profile, and  \textbf{(e)} and \textbf{(f)} are the headspace and oxygen absorption profiles.}
+            \label{fig:resultados herramienta}
+    \end{figure}
+On the other hand, if the user wants to make a multilayer film simulation he must select the option multilayer in the ''Type of film" box. When this option is selected, the parameter panel changes, being the main difference that it ask the user how many layers do the film has. Once this number is selected new parameters appear asking to select which of the films are going to be reactive, the thickness of each layer and its corresponding material. Finally when the user select which of the layers is reactive the program ask for the volumetric concentration of OS in each reactive layer (See Figure \ref{fig:multilayer_panel}). With this information, the program is ready to start the simulation by pressing the ''Calculate performance" button. The tool has an additional feature than enables to save the results data in a Excel file by pressing in the button ''Save Results". 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.6]{Documento_Latex/Imagenes/multilayer_panel.png}
+    \caption{Multilayer parameter panel for the case of a 3-layer film}
+    \label{fig:multilayer_panel}
+\end{figure}
+
+\printbibliography
+\end{refsection}
