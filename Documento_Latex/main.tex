@@ -20,10 +20,13 @@
 \usepackage[version=4]{mhchem}
 \usepackage{chemfig}
 \usepackage{silence}
+\usepackage{subfiles}
 \usepackage[justification=centering]{caption}
 \WarningsOff[gensymb]
 \addbibresource{Referencias/references.bib}
 \graphicspath{{Documento_Latex/Imagenes/}} 
+
+
 
 \raggedbottom
 
@@ -108,7 +111,9 @@
 \input{Documento_Latex/Secciones/Resultados_y_Analisis}
 \chapter{Conclusions and Future work}
 \input{Documento_Latex/Secciones/Conclusiones}
-
+\appendix
+\chapter{Explanation on homogeneous film mathematical model}
+\input{Documento_Latex/Secciones/Apendice_1}
 
 
 
