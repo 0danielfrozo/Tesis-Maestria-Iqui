@@ -1,0 +1,99 @@
+\documentclass[twoside,11pt]{report}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage[a4paper,width=150mm,top=25mm,bottom=25mm,bindingoffset=6mm]{geometry}
+\usepackage{gensymb}
+\usepackage{multirow}
+\usepackage{amsmath}
+\usepackage{pgf}
+\usepackage[english,spanish,activeacute,]{babel}
+\usepackage[some]{background}
+\usepackage[hyphens, spaces,obeyspaces]{url}
+\usepackage[breaklinks]{hyperref}
+\usepackage{subfig}
+\usepackage{adjustbox}
+\usepackage{fancyhdr}
+\usepackage[style=ieee,block=ragged]{biblatex}
+\usepackage{csquotes}
+\usepackage{pgf-pie}
+\usepackage{float}
+\usepackage[version=4]{mhchem}
+\usepackage{chemfig}
+\usepackage{silence}
+\usepackage[justification=centering]{caption}
+\WarningsOff[gensymb]
+\addbibresource{Referencias/references.bib}
+\graphicspath{{Documento_Latex/Imagenes/}} 
+
+\raggedbottom
+
+
+\backgroundsetup{scale=1,color=black,opacity=0.05,angle=0,contents={%
+  \includegraphics[width=0.5\paperwidth]{Documento_Latex/Imagenes/logo.png}}%
+ }
+
+\makeatletter
+\newcounter{reaction}
+%%% >> for report and book >>
+\renewcommand\thereaction{R\,\thechapter.\arabic{reaction}}
+\@addtoreset{reaction}{chapter}
+\newcommand\reactiontag{\refstepcounter{reaction}\tag{\thereaction}}
+\newcommand\reaction@[2][]{\begin{equation}\ce{#2}%
+\ifx\@empty#1\@empty\else\label{#1}\fi%
+\reactiontag\end{equation}}
+\newcommand\reaction@nonumber[1]{\begin{equation*}\ce{#1}%
+\end{equation*}}
+\newcommand\reaction{\@ifstar{\reaction@nonumber}{\reaction@}}
+\makeatother
+
+\DeclareUnicodeCharacter{2212}{-}
+\linespread{1.5}
+
+\fancyfoot{}
+\fancyfoot[LE,RO]{\thepage}
+\fancyhead[RE,LO]{CHAPTER \thechapter.}
+\pagenumbering{roman}
+
+\title{Development of a Computational Desing Tool for Polypropylene-based composites having oxygen scavengers using the Hetereogenous Film Approach}
+\author{Daniel Rozo}
+\date{\Today}
+
+\begin{document}
+\selectlanguage{english} 
+\begin{titlepage}
+\begin{center}
+\BgThispage
+        \huge
+        \textbf{Development of a Computational Desing Tool for Polypropylene-based composites having oxygen scavengers using the Hetereogenous Film Approach}
+        
+        \vspace{1cm}
+        \LARGE
+
+        \vspace{1cm}
+        \textit{Author:}\\
+        \textbf{Daniel Fernando Rozo Oviedo}\\
+        \vspace{1.5cm}
+        \textit{Supervisor:}\\
+        \textbf{Felipe Salcedo Galan, PhD}\\
+        \textit{Co-advisor:}\\
+        \textbf{Jorge Alberto Medina Perilla, Dr. Ing.}
+        \vfill
+ 
+        Thesis submitted for the degree of\\ Master in Chemical Engineering
+        
+ 
+        \vspace{0.5cm}
+ 
+        
+ 
+        \Large
+        Deparment of Chemical Engineering\\
+        Universidad de los Andes\\
+        Bogotá, Colombia\\
+        \today
+ 
+    \end{center}
+\afterpage{\null\newpage}
+\end{titlepage}
+
+\end{document}
