@@ -1,15 +1,57 @@
 \begin{refsection}
 In this chapter, the methodology followed for the development of this thesis is going to be carried out. This section is going to be divided in two main parts. The first one, will describe the experimental procedures carried out including the linseed oil oxidation kinetic determination, the silica micro-capsules synthesis, the OS film elaboration and the head-space oxygen concentration evolution test. The second part will refer to the computational procedure followed for the development of the design tool program, this includes the physical model description, the numerical resolution approach, the kinetic parameters adjustment strategy and finally the graphical user interface (GUI) programming. 
 
-\section{Experimental Procedure}
-\subsection{Silica micro-capsules synthesis}
-Regarding the microcapsule synthesis, this has been carried out by the CIPP-CIPEM using the sol-gel emulsion templating methodology. This procedure consists of preparing an emulsion in which the disperse phase is the chemical specie that is desired to be encapsulated. In this case, the surfactant or emulsifier will serve as a template where tetraethyl orthosilicate (TEOS) precursor undergoes hydrolysis and condensation reactions to form the silica polymeric microcapsule \cites{GonzalezPungo2018EvaluacionActivos, GomezAlfonzo2018AceiteOxigeno} To obtain 2.34g of dry product, initially 85.5 mL of water, 0.48g of cetrimonium bromide (CTAB) and 36mL of ethanol are mixed in a 250mL beaker at a speed of 700rpm during 5 minutes. Afterward, 1.5 mL of double-cooked linseed oil is added drop by drop to the previous mix, and immediately after, 6mL of TEOS is slowly added to the beaker, which is left mixing during 5 minutes more. Finally, 3mL of 25\% ammonia solution is added to the beaker to catalyze the reaction, which is left mixing at 700 rpm for 24 hours. The mix obtained is centrifuged at a velocity of 4000 rpm for ten minutes as a result the micro-capsules obtained are separated from the liquid phase of the mix. Next, the solid is dried in a vacuum oven at 70\degree C and a pressure of $-0.06 MPa$ for 4 hours. After that time, the microcapsules are ready to be incorporated into the polymeric film. Next, an image of the product obtained is shown in figure \ref{fig:capsules}. 
+\section[Exp.Procedure]{Experimental Procedure}
+\subsection{Materials}\label{subsec:materials}
+Before describing the procedure followed to synthesis active silica micro-capsules containing linseed oil, as well as describing the active film elaboration methodology it is important to state the materials used in these experimental procedures. The materials are listed in table 
+
+\begin{table}[h]
+\centering
+\caption{Materials used in the experimental procedure of the thesis.}
+\label{tab:my-table}
+\begin{tabular}{|c|c|}
+\hline
+Material                        & Quantity (per batch) \\ \hline
+Ethanol  Absolute               & 36 mL                \\ \hline
+Deionized  Water                & 85.5 mL              \\ \hline
+Cetrimonium  Bromide (CTAB)     & 0.48 g               \\ \hline
+Linseed  Oil                    & 1.5 mL               \\ \hline
+Tetraethylorthosilicate  (TEOS) & 6 mL                 \\ \hline
+25\% Ammonia Solution           & 3 mL                 \\ \hline
+High Density Polyethylene (HDPE) Homopolymer & 62 g            \\ \hline
+\end{tabular}
+\end{table}
 
 
 
+\subsection{Silica micro-capsules synthesis}\label{subsec:met.sintesis}
+Regarding the microcapsule synthesis, this has been carried out by the CIPP-CIPEM using the sol-gel emulsion templating methodology. This procedure consists of preparing an emulsion in which the disperse phase is the chemical specie that is desired to be encapsulated. In this case, the surfactant or emulsifier will serve as a template where tetraethyl orthosilicate (TEOS) precursor undergoes hydrolysis and condensation reactions to form the silica polymeric microcapsule \cites{Alvarado2020ValidacionesEncapsulados}. To obtain 2.34g of dry product, initially 85.5 mL of water, 0.48g of cetrimonium bromide (CTAB) and 36mL of ethanol are mixed in a 250mL beaker at a speed of 700rpm during 5 minutes. Afterward, 1.5 mL of double-cooked linseed oil is added drop by drop to the previous mix, and immediately after, 6mL of TEOS is slowly added to the beaker, which is left mixing during 5 minutes more. Finally, 3mL of 25\% ammonia solution is added to the beaker to catalyze the reaction, which is left mixing at 700 rpm for 24 hours. The mix obtained is centrifuged at a velocity of 4000 rpm for ten minutes as a result the micro-capsules obtained are separated from the liquid phase of the mix. Next, the solid is dried in a vacuum oven at 70\degree C and a pressure of $-0.06 MPa$ for 4 hours. After that time, the microcapsules are ready to be incorporated into the polymeric film. In figure \ref{fig:capsules}, an image of the product obtained is shown. 
 
 
+\begin{figure}[h]
+    \centering
+    \begin{subfigure}[b]{0.48\linewidth}           \centering
+        \includegraphics[width=\linewidth]{Documento_Latex/Tesis 2/Imagenes/capsulas (2).png}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.48\linewidth}
+        \centering
+        \includegraphics[width=0.5\linewidth]{Documento_Latex/Tesis 2/Imagenes/capsulas.png}
+    \end{subfigure}
+    \caption{Silica microcapsules obtained by the methodology described in section \ref{subsec:met.sintesis}}
+    \label{fig:capsules}
+\end{figure}
 
+\subsection{Film Elaboration} \label{sec:film_elaboration}
+The film elaboration refers to the the different process which occur between the incorporation of the silica micro-capsules to the final production of polymeric film. Regarding the incorporation of the capsules, once having 9g of this, a masterbatch (MB) is prepared by mixing the micro-capsules load and high density polyethylene (HDPE) homopolymer within an internal mixer, which has to be preheated 10 minutes before at 170\degree C. The ratio of  micro-capsules to HDPE in the mix was 20:80 mass proportion respectively. This mix is poured into the internal mixer for 7 minutes during which the torque and temperature are monitored until this two signals stabilized indicating a homogeneous mixture. The material obtained must was then frozen to a temperature of -80\degree C for 3 hours in an ultra-freezer. This process is necessary to increase the fragility of the material. Afterwards, it was taken into a blade mill for grinding for 1 minute and in this way, the masterbatch (MB) was finished. \\
+
+Next, the masterbatch previously obtained was diluted with HPDE homopolymer to form the films. To do this a mix of 10g of MB and 30g of HPDE was submitted through the same process of mixing as the masterbatch did. Finally, the process of compression molding is done by using a press. To do this, two aluminum foils and two Teflon foils are put over the two sides of the press, and in the inferior part of it, a quantity of 12g of the HDPE-MB mixture is poured using a 17cm x 17cm aluminum frame with a 3cm width. The inferior and superior plates are both preheated to a temperature of 170\degree C and the press must be configured so that an initial pressure of 15 bar is applied during 1 minute and then a pressure of 110 bar must be applied during 1.5 minutes after which a 10 minutes cooling time is done. After this, the desired film of 17cm x 17cm with OS load is obtained (Figure \ref{fig:film}).
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.6\linewidth]{Documento_Latex/Imagenes/pelicula.png}
+    \caption{PP film containing silica microcapsules which were incorporated by the methodology described in section \ref{sec:film_elaboration} \cite{ArellanoAyala2019EfectosAntioxidantes}}
+    \label{fig:film}
+\end{figure}
 
 
 
