@@ -3,12 +3,12 @@ In this chapter, the methodology followed for the development of this thesis is 
 
 \section[Exp.Procedure]{Experimental Procedure}
 \subsection{Materials}\label{subsec:materials}
-Before describing the procedure followed to synthesis active silica micro-capsules containing linseed oil, as well as describing the active film elaboration methodology it is important to state the materials used in these experimental procedures. The materials are listed in table 
+Before describing the procedure followed to synthesize active silica micro-capsules containing linseed oil, as well as describing the active film elaboration methodology it is important to state the materials used in these experimental procedures. The materials used are listed in table \ref{tab:material}
 
 \begin{table}[h]
 \centering
-\caption{Materials used in the experimental procedure of the thesis.}
-\label{tab:my-table}
+\caption{Materials used in the experimental procedure for the synthesis of 2g of micro-capsules and for a 17cmx17cm polymeric film.}
+\label{tab:material}
 \begin{tabular}{|c|c|}
 \hline
 Material                        & Quantity (per batch) \\ \hline
@@ -48,10 +48,22 @@ Next, the masterbatch previously obtained was diluted with HPDE homopolymer to f
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.6\linewidth]{Documento_Latex/Imagenes/pelicula.png}
-    \caption{PP film containing silica microcapsules which were incorporated by the methodology described in section \ref{sec:film_elaboration} \cite{ArellanoAyala2019EfectosAntioxidantes}}
+    \includegraphics[width=0.6\linewidth]{Imagenes/pelicula.png}
+    \caption{HPDE film containing silica microcapsules which were incorporated following the methodology described in section \ref{sec:film_elaboration} \cite{ArellanoAyala2019EfectosAntioxidantes}}
     \label{fig:film}
 \end{figure}
+
+\subsection{Headspace Oxygen Absorption Test}\label{sec:headspace}
+The head-space is defined in the packaging industry as the volume of gas which is inside a package. In this case the evolution of the oxygen concentration within the head-space gas of a control volume was used as the main experiment to verify the prediction capacity of the physical model and numerical solutions made throughout this thesis. To carry out this test the Quantek Quantek 901 head-space oxygen analyzer was used. This equipment can measure oxygen concentrations going from 0.1\% v/v to 100\%v/v with a 0.1\% v/v precision. The operating principal of the Quantek 901 is based on a fuel cell type oxygen sensor, which consist of a diffusion barrier, a sensing electrode made of platinum and a working electrode made of zinc, all submerged in a solution of potassium hydroxide which acts as an electrolyte \cite{Boissevain1996CorporateGuide}. The entering oxygen diffuses into the sensor and reduces to hydroxyl ions at the cathode, as shown in reaction \ref{reacc:head_spc_1} \reaction[reacc:head_spc_1]{O2 +2H2O +4e^- -> 4OH^-\text{.}} Next, the hydroxyl ions formed are oxidized at the zinc anode (reaction \ref{reacc:head_spc_2}) .
+ \reaction[reacc:head_spc_2]{2Pb + 4OH^- -> 2PbO +2H2O + 4e^-\text{,}}
+ which yields an overall cell reaction as the one shown in reaction \ref{reacc:head_spc_3}.
+ \reaction[reacc:head_spc_3]{2Pb + O2 -> 2PbO}
+
+ 
+ The current generated during this reaction is proportional to the concentration of oxygen present in the medium. With this in mind,  the sensor measures these currents and calculates the quantity of oxygen within a gas sample \cite{GarciaMora2015KineticScavengers, Boissevain1996CorporateGuide}.\\
+ 
+ The head space oxygen analysis was carried out for silica micro-capsules as well as for 5\% OS HPDE films. To carry out this test, 8cm by 18cm triple layer bags (polypropilene, metallic polyester and low density polietylene respectively) were used. To test the nanomaterial, 0.6g of it was introduced into the bag, while for testing the films, a sample of x by y was added to the bag.  Once the sample which were going to be tested were within the bags, these were sealed using a Sentinel Heat Sealer 12AS from Packaging Industries Inc., as shown in figure .
+ 
 
 
 
