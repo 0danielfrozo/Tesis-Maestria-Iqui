@@ -62,7 +62,7 @@ The head-space is defined in the packaging industry as the volume of gas which i
  
  The current generated during this reaction is proportional to the concentration of oxygen present in the medium. With this in mind,  the sensor measures these currents and calculates the quantity of oxygen within a gas sample \cite{GarciaMora2015KineticScavengers, Boissevain1996CorporateGuide}.\\
  
- The head space oxygen analysis was carried out for silica micro-capsules as well as for 5\% OS HPDE films. To carry out this test, 8cm by 18cm triple layer bags (polypropilene, metallic polyester and low density polietylene respectively, see figure \ref{fig:non_sealed_bag}) were used. To test the nanomaterial, 0.6g of it was introduced into the bag, while for testing the films, a sample of x by y was added to the bag. Once the samples which were going to be tested were within the bags, these were sealed using a Sentinel Heat Sealer 12AS from Packaging Industries Inc., as shown in figure \ref{fig:sealer}. This equipment was preheated to a temperature of 400\degree C and the bags  were pressed within the sealer during 4 seconds, after which the bag was sealed as shown in figure \ref{fig:sealed_bag}.  
+ The head space oxygen analysis was carried out for silica micro-capsules as well as for 5\% OS HPDE films. To carry out this test, 8cm by 18cm triple layer bags (polypropilene, metallic polyester and low density polietylene respectively, see figure \ref{fig:non_sealed_bag}) were used. To test the nanomaterial, 0.6g of it was introduced into the bag, while for testing the films, a sample of 8cm by 14cm was added to the bag. Once the samples which were going to be tested were within the bags, these were sealed using a Sentinel Heat Sealer 12AS from Packaging Industries Inc., as shown in figure \ref{fig:sealer}. This equipment was preheated to a temperature of 400\degree C and the bags  were pressed within the sealer during 4 seconds, after which the bag was sealed as shown in figure \ref{fig:sealed_bag}.  
  
  \begin{figure}[h]
     \centering
@@ -87,13 +87,74 @@ The head-space is defined in the packaging industry as the volume of gas which i
     \label{fig:bags}
 \end{figure}
 
-Once the bags were sealed, they were filled with 180mL of air. This was done by sticking a ethylene propylene diene monomer rubber (EPDM) septa to the surface of the bag and injecting through it the desired quantity of air with a graduated syringe. The septa used will prevent air to go into the bag once they are stabbed so the head space atmosphere is only altered by the presences of the capsules or the film within it.
+Once the bags were sealed, they were filled with 120mL of air. This was done by sticking a adhesive acrylic with polyethylene liner septa to the surface of the bag and injecting through it the desired quantity of air with a graduated syringe. The septa used prevents that air gets into the bag once they are stabbed so the head space atmosphere is only altered by the presence of the capsules or the film within it.
 
-Also, it is important to clarify that the tests for the 0.6g of capsules and the 5\% OS HPDE film were made by triplicate and that a negative control was set by filling three bags with only air, this to monitor that the oxygen concentration within them remains stable throughout the test. \\
+Also, it is important to clarify that the tests for the 1.2g of capsules and the 5\% OS HPDE films were made by triplicate and that a negative control was set by filling three bags with only air, this to monitor that the oxygen concentration within them remains stable throughout the test. \\
 
-Finally, to carry out the headspace oxygen concentration test, a bag must be puncture through the EPDM septa using the needle attached to the Quantek Oxygen Analyser. This equipment was calibrated to take a sample of 2mL of the headspace gas within the test bag, which is analysed by the equipment which finally  reports the oxygen volumetric concentration in headspace gas (See figure ). 
+Finally, to carry out the headspace oxygen concentration test, a bag must be puncture through the EPDM septa using the needle attached to the Quantek Oxygen Analyser. This equipment was calibrated to take a sample of 2mL of the headspace gas within the test bag, which is analysed by the equipment which finally  reports the oxygen volumetric concentration in headspace gas (See figure \ref{fig:headspace_test_image}). The tests made were of destructive nature, meaning that once a bag was punctured to do a measurement, it was immediately discarded. This approach assumes that the behavior of the oxygen absorption by a sample in each bag is going to be equal in all the bags, and has the advantage (over the non-destructive approach) that it do not allows the leakage of atmospheric oxygen due to successive measurements over the same bag. 
+
+
+Each measurement was made every 48 hours and a total of 6 data points were taken (which cover up a total time of 340 test hours).
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.7\textwidth]{Documento_Latex/Tesis 2/Imagenes/Headspace_test.png}
+    \caption{Representation of the oxygen headspace concentration test assembly.}
+    \label{fig:headspace_test_image}
+\end{figure}
  
+\subsection[Oxidative TGA]{Oxidative Termogravimetric Analysis}\label{sec:TGA} 
+To carry on the development of the design tool it is important to determine the oxidation kinetics of double cooked linseed oil. Given that in the autoxidation
+process described in Section \textbf{X}, there is an increase in the weight of oils due to the absorption of oxygen from the environment. Even though these changes in weight are minimal, they are big enough for being detected in a thermogravimetric analysis (TGA). So to establish the oil autoxidation reaction constants, TGA test in several atmospheres and temperatures were carried over double cooked linseed oil samples.\\
+
+
+All tests were made using a simultaneous TGA-DSC SDT Q600 (TA instruments) with a sample of 26mg of linseed oil and using a heating rate of 20\degree C . The different conditions used in every TGA run made is shown in table \ref{tab:TGA_test}
+
+\begin{table}[h]
+\centering
+\caption{Linseed oil TGA test conditions evaluated to determine the oxidation kinetics constants.}
+\label{tab:TGA_test}
+\begin{tabular}{|c|c|c|}
+\hline
+Sample &
+  Atmosphere &
+  Temperature {[}\degree C{]} \\ \hline
+\multirow{9}{*}{\begin{tabular}[c]{@{}c@{}}Linseed Oil\\  (26mg)\end{tabular}} &
+  \multirow{3}{*}{Nitrogen UAP} &
+  25 \\ \cline{3-3} 
+ &                          & 40 \\ \cline{3-3} 
+ &                          & 80 \\ \cline{2-3} 
+ &
+  \multirow{3}{*}{\begin{tabular}[c]{@{}c@{}}Oxygen UAP 70\% v/v - \\ Nitrogen UAP 30\% v/v\end{tabular}} &
+  25 \\ \cline{3-3} 
+ &                          & 40 \\ \cline{3-3} 
+ &                          & 80 \\ \cline{2-3} 
+ & \multirow{3}{*}{Dry Air} & 25 \\ \cline{3-3} 
+ &                          & 40 \\ \cline{3-3} 
+ &                          & 80 \\ \hline
+\multicolumn{2}{|c|}{Time per test run {[}h{]}} &
+  24 \\ \hline
+\end{tabular}
+\end{table}
+
+
+ The rst TGA test carried out was under a nitrogen atmosphere. This is done to
+observe the sole eect of the 
+ow of air around linseed oil and OS lms. In this case, the
+volatile components within the sample are going to evaporate, generating a reduction in
+the measured mass. The second TGA test, which has to be carried is in a pure oxygen
+atmosphere. This is the case in which oxygen is in excess concerning the substrate, so
+the kinetics of oxidation can be simplied, as explained in section 1.2.4. The results in
+the change of mass of the sample obtained are normalized for the mass reduction due
+to the evaporation obtained from the nitrogen atmosphere TGA. In this way, there is a
+guarantee that the changes observed in the mass on the oxygen TGA are exclusively due
+to the absorption of oxygen. The third and nal TGA made was in air atmosphere, in
+which oxygen has a concentration of 21 vol%. Contrary to the case of oxygen atmosphere
+TGA, in this case, it is not correct to assume that oxygen is in excess to the substrate in
+the oil, so the results obtained in this test must be compared to the complete autoxidation
+kinetics of the linseed oil.
  
+
  
  
  
