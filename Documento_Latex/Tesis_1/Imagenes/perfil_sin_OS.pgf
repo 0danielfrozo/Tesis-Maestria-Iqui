@@ -26215,7 +26215,7 @@
 \end{pgfscope}%
 \begin{pgfscope}%
 \pgfsys@transformshift{4.700000in}{1.570000in}%
-\pgftext[left,bottom]{\pgfimage[interpolate=true,width=0.380000in,height=1.890000in]{Documento_Latex/Imagenes/perfil_sin_OS-img0.png}}%
+\pgftext[left,bottom]{\pgfimage[interpolate=true,width=0.380000in,height=1.890000in]{Documento_Latex/Tesis_1/Imagenes/perfil_sin_OS_img}}%
 \end{pgfscope}%
 \begin{pgfscope}%
 \pgfsetbuttcap%
